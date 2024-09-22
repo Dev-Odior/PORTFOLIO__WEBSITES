@@ -617,7 +617,27 @@
     </main>
 
     <!--=============== LIGHTBOX ===============-->
-    <div class="lightbox"></div>
+    <div class="lightbox">
+      <div class="lightbox__content">
+        <div class="lightbox__close">&times;</div>
+        <img
+          src="assets//img/photography-img1.jpg"
+          alt=""
+          class="lightbox__img"
+          onclick="nextItem()"
+        />
+
+        <div class="lightbox__caption">
+          <div class="caption__counter"></div>
+        </div>
+      </div>
+
+      <div class="lightbox__controls">
+        <div class="prev__item" onclick="prevItem()"><i class="bx bxs-left-arrow"></i></div>
+      </div>
+        <div class="next__item" onclick="nextItem()"><i class="bx bxs-right-arrow"></i></div>
+      </div>
+    </div>
 
     <!--=============== FOOTER ===============-->
     <footer class="footer">

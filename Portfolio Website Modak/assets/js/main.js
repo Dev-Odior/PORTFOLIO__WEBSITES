@@ -76,4 +76,60 @@ tabs.forEach((tab) => {
 
 /*=============== LIGHTBOX GALLERY ===============*/
 
+const portfolioItems = document.querySelectorAll(".work__content"),
+  totalPortfolioItem = portfolioItems.length,
+  lightbox = document.querySelector(".lightbox"),
+  lightboxImg = document.querySelector(".lightbox__img"),
+  lightboxCounter = document.querySelector(".caption__counter"),
+  lightboxClose = document.querySelector(".lightbox__close");
+
+let itemIndex = 0;
+
+for (let i = 0; i < totalPortfolioItem; i++) {
+  portfolioItems[i].addEventListener("click", function () {
+    itemIndex = i;
+    changeItem();
+    toggleLightbox();
+  });
+}
+
+function nextItem() {
+  if (itemIndex === totalPortfolioItem - 1) {
+    itemIndex = 0;
+  } else {
+    itemIndex++;
+  }
+
+  changeItem();
+}
+
+function prevItem() {
+  if (itemIndex === 0) {
+    itemIndex = totalPortfolioItem - 1;
+  } else {
+    itemIndex--;
+  }
+
+  changeItem();
+}
+
+function toggleLightbox() {
+  lightbox.classList.toggle("open");
+}
+
+function changeItem() {
+  imgSrc = portfolioItems[itemIndex]
+    .querySelector(".work__content img")
+    .getAttribute("src");
+  lightboxImg.src = imgSrc;
+  lightboxCounter.innerHTML = itemIndex + 1 + " of " + totalPortfolioItem;
+}
+
+lightbox.addEventListener("click", function (event) {
+  if (event.target === lightboxClose || event.target === lightbox) {
+    toggleLightbox();
+  }
+});
+
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+  
